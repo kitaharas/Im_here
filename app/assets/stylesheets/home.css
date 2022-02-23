@@ -1547,6 +1547,10 @@ header .global-menu ul a:hover {
   display: inline-block;
 }
 
+.profile div p.rooms-follow-count {
+  margin-left: 0;
+}
+
 .profile div a {
   display: inline-block;
   position: relative;
@@ -1626,6 +1630,14 @@ header .global-menu ul a:hover {
   opacity: 0.5;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+}
+
+.event-container .tab-menu li a .room-message-name {
+  overflow: hidden;
+  overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 
 #schedule {
@@ -1710,6 +1722,12 @@ header .global-menu ul a:hover {
   line-height: 50px;
   color: black;
   margin-left: 8px;
+  max-width: 200px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 
 .follower .follow-btn {
@@ -1915,17 +1933,25 @@ header .global-menu ul a:hover {
 .event-user-plofile p {
   line-height: 50px;
   padding: 0 0 0 20px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  width: 160px;
 }
 
 .event-user-plofile .unlock-btn,
 .event-user-plofile .follow-btn {
   cursor: pointer;
-  line-height: 50px;
-  margin-left: 60px;
+  line-height: 19px;
+  margin-left: 10px;
   background: goldenrod;
   color: white;
-  border-radius: 30px;
-  padding: 0 10px;
+  border-radius: 26px;
+  padding: 10px;
+  font-size: 13px;
+  text-align: center;
 }
 
 .event-user-plofile .follow-btn:hover {
@@ -2498,7 +2524,7 @@ header .global-menu ul a:hover {
 
 #gest-message-list #message-onload {
   position: absolute;
-  top: -89px;
+  top: -112px;
   right: 0px;
   height: 36px;
   width: 151px;

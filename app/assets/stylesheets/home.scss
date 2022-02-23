@@ -1375,6 +1375,9 @@ header{
       margin-left:60px;
       display: inline-block;
     }
+    & p.rooms-follow-count{
+      margin-left: 0;
+    }
     & a{
       display: inline-block;
       position: relative;
@@ -1440,6 +1443,13 @@ header{
         &:not(.active):hover{
         opacity: 0.5;
         transition: 0.4s;
+        }
+        & .room-message-name{
+          overflow: hidden;
+          overflow-wrap: break-word;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
         } 
       }
     }
@@ -1510,6 +1520,12 @@ header{
         line-height: 50px;
         color:black;
         margin-left: 8px;
+        max-width: 200px;
+        overflow: hidden;
+        overflow-wrap: break-word;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
       }
     }
   }
@@ -1686,16 +1702,24 @@ header{
   & p {
     line-height: 50px;
     padding: 0 0 0 20px;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    width: 160px;
   }
   .unlock-btn,
   .follow-btn{
     cursor: pointer;
-    line-height: 50px;
-    margin-left: 60px;
+    line-height: 19px;
+    margin-left: 10px;
     background: goldenrod;
     color: white;
-    border-radius: 30px;
-    padding: 0 10px
+    border-radius: 26px;
+    padding: 10px;
+    font-size: 13px;
+    text-align: center;
   }
   .follow-btn:hover{
     opacity: .7;
@@ -2170,7 +2194,7 @@ header{
   position: relative;
   #message-onload{
     position: absolute;
-    top: -89px;
+    top: -112px;
     right: 0px;
     height: 36px;
     width: 151px;

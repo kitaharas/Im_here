@@ -13,7 +13,7 @@
     </div>
     <p><%= @to.name %>さん</p>
     <div >
-      <p>フォロー数: <%= @to.followings.count %> フォロワー数: <%= @to.followers.count %></p>
+      <p class="rooms-follow-count">フォロー数: <%= @to.followings.count %> フォロワー数: <%= @to.followers.count %></p>
     </div>
     <div class="profile-coment">
       <% if @to.comment == nil || @to.comment == "" %>
@@ -30,33 +30,26 @@
       <ul class="tab-menu">
         <li>
           <a class="active" data-id="gest-message-list">
-            <%= @to.name %>さんとのメッセージ
+            <p class="room-message-name"><%= @to.name %></p>さんとのメッセージ
           </a>
         </li>
         <li>
           <a data-id="event-list">
-            <%= @to.name %>さんのイベント
+            <p class="room-message-name"><%= @to.name %></p>さんのイベント
           </a>
         </li>
       </ul>
-
       <section class="content active" id="gest-message-list">
+      <button id="message-onload" onclick="more_message()" >過去のメッセージ<br>読み込み</button>
+      <ul class="message-list">
 
-<button id="message-onload" onclick="more_message()" >過去のメッセージ<br>読み込み</button>
-
-
-        <ul class="message-list">
-        
-      
-
-<% if false %>
+        <% if false %>
           <% @messages&.each do | message | %>
             <% if message.user_id == session[:user_id] %>
               <% if message.content.present? %>
                 <li style="margin-left:auto; width:fit-content">
                   <div class="message-right">
-                      <p class="message"><%= safe_join(message.content.to_s.split("\n"),tag(:br)) %></p>
-                    
+                    <p class="message"><%= safe_join(message.content.to_s.split("\n"),tag(:br)) %></p>
                   </div>
                   <p class="posting-time-right"><%= l message.created_at%></p>
                   <% if message.image_name.present?  %>
@@ -94,122 +87,8 @@
               <% end %>
             <% end %>
           <% end %>
-       <% end %>
-        </ul>
-  <script>
-
-          
-          let pageCount = 2
-          "<% if @room %>"
-          // console.log("unko");
-          const URL = "http://localhost:3000/rooms/<%= @room.id %>/message"
-
-          function message_create(page=0) {
-            fetch(URL + "/" + page)
-            .then(res => res.json())
-            .then(data => {
-              const listData = data.messages.map(message => {
-                const li = document.createElement('li');
-                const div = document.createElement('div');
-                const p = document.createElement('p');
-                const pTime = document.createElement('p');
-
-                let ymd = message.created_at.substr(0,10)
-                let hm = message.created_at.substr(11,5)
-                
-
-                pTime.textContent = ymd + "\u00a0" +hm;
-                const img = document.createElement('img');
-                img.classList.add = "message-image"
-                // console.log(message);                
-                // console.log(message.content.length);;                
-              
-                if(data.user.id === message.user_id ){
-                  document.querySelector('.message-list').prepend(li);
-                  li.style.marginLeft = "auto";
-                  // li.style.width = "fit-content";
-
-                  if(message.content !== null ){
-                    
-                    if(message.content.length !== 0 ){
-                    p.innerHTML = message.content.replace(/(\r\n|\n|\r)/gm, '<br>');
-                    p.classList.add("message");
-                    div.classList.add("message-right");
-                    li.appendChild(div);
-                    div.appendChild(p);
-                    }
-                    if( message.image_name.url !== null ){
-                      img.src = message.image_name.url;
-                      li.appendChild(img);
-                      
-                    } 
-                    li.appendChild(pTime);
-                    pTime.classList.add("posting-time-right");
-                  }
-                } else {
-                  document.querySelector('.message-list').prepend(li);
-                  // li.style.marginLeft = "auto";
-                  // li.style.width = "fit-content";
-
-                  if(message.content !== null ){
-                    
-                    if(message.content.length !== 0 ){
-                    p.textContent = message.content;
-                    p.classList.add("message");
-                    div.classList.add("message-left");
-                    li.appendChild(div);
-                    div.appendChild(p);
-                    }
-                    if( message.image_name.url !== null ){
-                      img.src = message.image_name.url;
-                      li.appendChild(img);
-                      
-                    } 
-                    li.appendChild(pTime);
-                    pTime.classList.add("posting-time");
-                  }
-                }
-
-
-
-               
-                
-                
-              });
-            });
-          
-
-          }
-          message_create()
-
-          function more_message(){
-            message_create(pageCount)
-            pageCount += 1
-            console.log(pageCount)
-          }
-
-          window.onload = function(){
-            let messageList = document.querySelector('.message-list');
-            messageList.scrollTop = messageList.scrollHeight;
-
-            // let list = messageList.firstElementChild;
-            
-            // console.log(list);
-            $(".message-list").scroll(function(){
-              let st = $(".message-list").scrollTop();
-              if (st == 0){
-                more_message();
-              }
-            });
-         
-
-          } 
-
-
-
-        
-          "<% end %>"
-        </script>
+        <% end %>
+      </ul>
 
         <%= form_for @message, url: message_create_path ,html: {class: "message-form"} do |f| %>
           <%= render 'layouts/error_messages', model: f.object %>
@@ -261,8 +140,118 @@
 </div>
 
 <script>
-  $(document).on('turbolinks:load', function() { 
 
+  let pageCount = 2
+  "<% if @room %>"
+
+    const params = window.location.href
+      console.log(params.substr());
+
+    const URLparams = params.substr();
+
+
+
+
+    const URL = `${URLparams}/message`
+    console.log(URL);
+    
+    function message_create(page=0) {
+      fetch(URL + "/" + page)
+      .then(res => res.json())
+      .then(data => {
+        const listData = data.messages.map(message => {
+          const li = document.createElement('li');
+          const div = document.createElement('div');
+          const p = document.createElement('p');
+          const pTime = document.createElement('p');
+
+          let ymd = message.created_at.substr(0,10)
+          let hm = message.created_at.substr(11,5)
+
+          pTime.textContent = ymd + "\u00a0" +hm;
+          const img = document.createElement('img');
+          img.classList.add = "message-image"
+          // console.log(message);                
+          // console.log(message.content.length);;                
+        
+          if(data.user.id === message.user_id ){
+            document.querySelector('.message-list').prepend(li);
+            li.style.marginLeft = "auto";
+            // li.style.width = "fit-content";
+
+            if(message.content !== null ){
+              
+              if(message.content.length !== 0 ){
+              p.innerHTML = message.content.replace(/(\r\n|\n|\r)/gm, '<br>');
+              p.classList.add("message");
+              div.classList.add("message-right");
+              li.appendChild(div);
+              div.appendChild(p);
+              }
+              if( message.image_name.url !== null ){
+                img.src = message.image_name.url;
+                li.appendChild(img);
+                
+              } 
+              li.appendChild(pTime);
+              pTime.classList.add("posting-time-right");
+            }
+          } else {
+            document.querySelector('.message-list').prepend(li);
+            // li.style.marginLeft = "auto";
+            // li.style.width = "fit-content";
+
+            if(message.content !== null ){
+              
+              if(message.content.length !== 0 ){
+              p.textContent = message.content;
+              p.classList.add("message");
+              div.classList.add("message-left");
+              li.appendChild(div);
+              div.appendChild(p);
+              }
+              if( message.image_name.url !== null ){
+                img.src = message.image_name.url;
+                li.appendChild(img);
+                
+              } 
+              li.appendChild(pTime);
+              pTime.classList.add("posting-time");
+            }
+          }
+        });
+      });
+
+    }
+    message_create()
+
+    function more_message(){
+      message_create(pageCount)
+      pageCount += 1
+      console.log(pageCount)
+    }
+
+    window.onload = function(){
+      let messageList = document.querySelector('.message-list');
+      messageList.scrollTop = messageList.scrollHeight;
+
+      // let list = messageList.firstElementChild;
+      
+      // console.log(list);
+      $(".message-list").scroll(function(){
+        let st = $(".message-list").scrollTop();
+        if (st == 0){
+          more_message();
+        }
+      });
+
+    } 
+
+  "<%end%>"
+
+
+  $(document).on('turbolinks:load', function() { 
+    
     const menuItems = document.querySelectorAll('.tab-menu li a');
     const contents = document.querySelectorAll('.content');
     
@@ -286,11 +275,6 @@
     });
 
 
-
-
-
-
-
     $('textarea').keyup(function(){
       let textVal = $(this).val();
       if(textVal.length > 0){
@@ -305,7 +289,6 @@
     $('#message_image_name').change(function(e){
       $('#message-submit').removeAttr('disabled');
     });
-
 
   });     
 

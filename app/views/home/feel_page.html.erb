@@ -7,14 +7,14 @@
   <% if @event.count == 0 %>
     <p>No event</p>
   <% elsif @event.count <= 6 %>
-    now less than 6
+  
     <%= render 'home/event', id: "swiper0",event: @event[0..5] %>
   <% elsif @event.count <= 12 %>
-    now less than 12
+  
     <%= render 'home/event', id: "swiper0",event: @event[0..5] %>
     <%= render 'home/event', id: "swiper1",event: @event[6..11] %>
   <% else %>
-    now is more than 12
+   
     <%= render 'home/event', id: "swiper0",event: @event[0..5] %>
     <%= render 'home/event', id: "swiper1",event: @event[6..11] %>
     <%= render 'home/event', id: "swiper2",event: @event[12..17] %>

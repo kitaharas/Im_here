@@ -13,11 +13,13 @@
     <p>フォロー数: <%= @user.followings.count %> フォロワー数: <%= @user.followers.count %></p>
     <%= link_to path ,data: {"turbolinks"=>false} do %>
       <button class="follow_viewer" style="<%= style %>"><%= button %></button>
-      <% if @notifications_follow.present? %>
-        <span class="user-show-notification"></span>
-      <% end %>
-      <% if @notifications_message.present? %>
-        <span class="user-show-notification"></span>
+      <% unless page == "show_our" %>
+        <% if @notifications_follow.present? %>
+          <span class="user-show-notification"></span>
+        <% end %>
+        <% if @notifications_message.present? %>
+          <span class="user-show-notification"></span>
+        <% end %>
       <% end %>
     <% end %>
   </div>

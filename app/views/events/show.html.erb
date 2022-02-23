@@ -128,10 +128,10 @@
             
             <% unless @event.user == current_user %>
               <% if current_user.following?(@event.user) %>
-                <div class="unlock-btn">フォロー解除</div>
+                <div class="unlock-btn">フォロー<br>解除</div>
               <% else %>
                 <%= link_to follow_path(@event.user), method: :post, remote: true do %> 
-                  <div class="follow-btn">フォローする</div>
+                  <div class="follow-btn">フォロー<br>する</div>
                 <% end %>
               <% end %>
             <% end %>

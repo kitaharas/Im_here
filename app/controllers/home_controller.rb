@@ -23,18 +23,18 @@ class HomeController < EventsController
   end
   
   def feel_page
-    @event = Event.where(feel_id: params[:id]).order(created_at: :desc).all
+    @events = Event.where(publish: true)
+    @event = @events.where(feel_id: params[:id]).order(created_at: :desc).all
     @feel = Feel.find(params[:id])
   end
 
   def genre
-    # 親のindexを呼び出す
     public_method(:genre).super_method.call
   end
 
   def genre_page
-    # Event.where(genre_id: g).order("RANDOM()").limit(18)
-    @event = Event.where(genre_id: params[:id]).order(created_at: :desc).all
+    @events = Event.where(publish: true)
+    @event = @events.where(genre_id: params[:id]).order(created_at: :desc).all
     @genre = Genre.find(params[:id])
     # @genre = Genre.find(params[:id])
     # @events = @genre.events.order(created_at: :desc).all
