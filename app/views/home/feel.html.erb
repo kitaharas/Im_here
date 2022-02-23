@@ -6,7 +6,7 @@
   <% @feel.each_with_index do |f, index| %>
     <div class="hero" data-turbolinks="false">
       <h3 style="display:inline-block;"><%= f.feel_title %></h3>
-       <%= link_to ">>",feel_page_path(f) ,style: "display:inline-block; color:black;" %>
+       <%= link_to ">>",feel_page_path(f) ,style: "display:inline-block; color:black;",data: {"turbolinks"=>false} %>
       <div class="swiper" id="swiper<%= index %>">
         <ul class="swiper-wrapper swipes">
           <% f.events.where(publish: true).order("RANDOM()").limit(6).each do |event| %>

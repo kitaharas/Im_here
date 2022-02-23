@@ -23,52 +23,58 @@
 
 <script data-turbolinks-eval="false">
   $(document).on('turbolinks:load', function() { 
-    class HeroSliders {
-      constructor(el) {
-        this.el = el;
-        this.swiper = this.__initSwiper();
-      }
-
-      __initSwiper() {
-        return new Swiper(this.el, {
-          loop: true,
-          grabCursor: true,
-          effect: 'slide',
-          slidesPerView: 4.5,
-          spaceBetween: 10,
-          speed: 1000,
-        });
-      }
-
-      start(options = {}) {
-        options = Object.assign({
-          delay: 5000,
-          disableOnInteraction: false
-        }, options);
-        this.swiper.params.autoplay =
-          options;
-        this.swiper.autoplay.start();
-      }
-    }
-
-    let lesson = document.getElementsByClassName("hero");
-
-    if(lesson.length == 1){
-      const hero0 = new HeroSliders('#swiper0');
-      hero0.start();
-    }else if(lesson.length == 2){
-      const hero0 = new HeroSliders('#swiper0');
-      hero0.start();
-      const hero1 = new HeroSliders('#swiper1');
-      hero1.start();
+    if(document.getElementById('swiper0') === null ){
+      return
     }else{
-      const hero0 = new HeroSliders('#swiper0');
-      hero0.start();
-      const hero1 = new HeroSliders('#swiper1');
-      hero1.start();
-      const hero2 = new HeroSliders('#swiper2');
-      hero2.start();
+      class HeroSliders {
+        constructor(el) {
+          this.el = el;
+          this.swiper = this.__initSwiper();
+        }
+  
+        __initSwiper() {
+          return new Swiper(this.el, {
+            loop: true,
+            grabCursor: true,
+            effect: 'slide',
+            slidesPerView: 4.5,
+            spaceBetween: 10,
+            speed: 1000,
+          });
+        }
+  
+        start(options = {}) {
+          options = Object.assign({
+            delay: 5000,
+            disableOnInteraction: false
+          }, options);
+          this.swiper.params.autoplay =
+            options;
+          this.swiper.autoplay.start();
+        }
+      }
+  
+      let lesson = document.getElementsByClassName("hero");
+  
+      if(lesson.length == 1){
+        const hero0 = new HeroSliders('#swiper0');
+        hero0.start();
+      }else if(lesson.length == 2){
+        const hero0 = new HeroSliders('#swiper0');
+        hero0.start();
+        const hero1 = new HeroSliders('#swiper1');
+        hero1.start();
+      }else{
+        const hero0 = new HeroSliders('#swiper0');
+        hero0.start();
+        const hero1 = new HeroSliders('#swiper1');
+        hero1.start();
+        const hero2 = new HeroSliders('#swiper2');
+        hero2.start();
+      }
+
     }
 
+ 
   });
 </script>
