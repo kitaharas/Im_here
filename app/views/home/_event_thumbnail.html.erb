@@ -8,6 +8,6 @@
   </div>
   <div class="event-thumb-text">
     <h3><%= event.event_title %></h2>
-    <p><%= event.content %></p>
+    <p><%= safe_join(event.content.to_s.split("\n"),tag(:br)) %></p>
   </div>
 </div> 

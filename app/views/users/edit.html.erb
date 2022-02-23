@@ -1,8 +1,6 @@
 <% provide(:title, "MyPage:edit") %>
 
 
-
-
 <div class="edit-page-section">
   <div class="profile">
     <div class="profile-img">
@@ -19,7 +17,7 @@
       </div>
     </div>
     <p>name： <%= @user.name %></p>
-    <p>フォロー：３ フォロワー：４</p>
+    <p>フォロー数: <%= @user.followings.count %> フォロワー数: <%= @user.followers.count %></p>
     <div class="profile-coment">
       <% @user.errors.full_messages.each do |message| %>
       <p class="edit-error">

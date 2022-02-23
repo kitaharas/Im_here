@@ -678,6 +678,14 @@ button:hover {
   margin: 40px auto 0;
 }
 
+#flash {
+  position: absolute;
+  top: 26%;
+  left: 2%;
+  font-weight: 600;
+  color: #ebd4c3;
+}
+
 header {
   position: fixed;
   top: 0;
@@ -1197,7 +1205,7 @@ header .global-menu ul a:hover {
   position: relative;
 }
 
-.search-top-section p {
+.search-top-section .search-result {
   margin-left: 20px;
 }
 
@@ -1269,7 +1277,6 @@ header .global-menu ul a:hover {
 .search-top-section .search-container ul li a {
   color: black;
   overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
 }
 
@@ -1415,7 +1422,6 @@ header .global-menu ul a:hover {
 .genre-top-section li a {
   color: black;
   overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
 }
 
@@ -1563,6 +1569,7 @@ header .global-menu ul a:hover {
 
 .profile .profile-coment .profile-comment-text {
   text-align: left;
+  margin: 0;
 }
 
 .profile .edit-btn {
@@ -1696,11 +1703,13 @@ header .global-menu ul a:hover {
 .follower a .follower-plofile img {
   width: 55px;
   display: block;
+  border-radius: 50%;
 }
 
 .follower a .follower-plofile .follower-name {
   line-height: 50px;
   color: black;
+  margin-left: 8px;
 }
 
 .follower .follow-btn {
@@ -2327,6 +2336,7 @@ header .global-menu ul a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
 }
 
 .event-body-section button {

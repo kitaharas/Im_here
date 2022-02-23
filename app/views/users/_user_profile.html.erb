@@ -1,0 +1,35 @@
+<div class="profile">
+
+  <div class="profile-img">
+    <% if @user.image_name.size == 0 %>
+      <%= image_tag "/assets/catman" %>
+    <% else %>
+      <%= image_tag @user.image_name.url %>
+    <% end %>
+  </div>
+  <p><%= @user.name %></p>
+
+  <div>
+    <p>フォロー数: <%= @user.followings.count %> フォロワー数: <%= @user.followers.count %></p>
+    <%= link_to path ,data: {"turbolinks"=>false} do %>
+      <button class="follow_viewer" style="<%= style %>"><%= button %></button>
+      <% if @notifications_follow.present? %>
+        <span class="user-show-notification"></span>
+      <% end %>
+      <% if @notifications_message.present? %>
+        <span class="user-show-notification"></span>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="profile-coment">
+    <% if @user.comment == nil || @user.comment == "" %>
+      <span>プロフィールコメント<span>
+    <% else %>
+      <p class="profile-comment-text">
+        <%= safe_join(@user.comment.to_s.split("\n"),tag(:br)) %>
+      </p>
+    <% end %>
+</div>
+
+</div>

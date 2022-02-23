@@ -634,7 +634,13 @@ button {
   margin:40px auto 0;
 }
 
-
+#flash{
+position: absolute;
+top: 26%;
+left: 2%;
+font-weight: 600;
+color: #ebd4c3;
+}
 
 header{
   position: fixed;
@@ -1062,7 +1068,7 @@ header{
   padding-top:20px;
   background-color: $green;
   position: relative;
-  p {
+  & .search-result {
     margin-left: 20px;
   }
   .search-container{
@@ -1075,10 +1081,6 @@ header{
         width :23%;
         margin: 0 5px 10px 5px;
         background-color: white;
-        // & img {
-        //   max-height: 170px;
-        //   object-fit: contain;
-        // }
         .event-thumbnail{
           margin: 20px auto 0;
           height: 290px;
@@ -1108,6 +1110,7 @@ header{
               display: -webkit-box;
               -webkit-box-orient: vertical;
               -webkit-line-clamp: 3;
+
             }  
           }
           .event-edit-image{
@@ -1121,7 +1124,7 @@ header{
         & a{
           color: black;
           overflow: hidden;
-          white-space: nowrap;
+          // white-space: nowrap;
           text-overflow: ellipsis;
         }
       }
@@ -1260,7 +1263,7 @@ header{
     & a{
       color: black;
       overflow: hidden;
-      white-space: nowrap;
+      // white-space: nowrap;
       text-overflow: ellipsis;
     }
   }
@@ -1326,15 +1329,11 @@ header{
   & .profile{
     & .profile-img{
       margin: 20px auto 10px;
-      // display: flex;
-      // align-items: flex-end;
       width:245px;
       & img{
         border-radius: 5px;
-        // width:50%;
       }
       & .img-btn{
-        // width:50%;
         background-color: $emerald;
         margin-top:20px;
         height: 72px;
@@ -1360,10 +1359,8 @@ header{
 }
 .profile{
   text-align: center;
-  // outline: solid;
   flex:.8;
   flex-direction: column;
-  // justify-content: space-around;
   display: flex;
   & .profile-img{
     padding-top: 20px;
@@ -1373,8 +1370,6 @@ header{
     border-radius: 5px;
   }
   & div{
-    // display: flex;
-
     & p{
       margin-bottom:10px;
       margin-left:60px;
@@ -1402,6 +1397,7 @@ header{
     
     & .profile-comment-text{
       text-align: left;
+      margin:0;
     }
     
   }
@@ -1508,10 +1504,12 @@ header{
       img{
         width:55px;
         display: block;
+        border-radius: 50%;
       }
       .follower-name{
         line-height: 50px;
         color:black;
+        margin-left: 8px;
       }
     }
   }
@@ -1926,10 +1924,8 @@ header{
     flex:1;
     position: relative;
     width: 360px;
-    // outline: solid;
   }
   .event-content-right{
-    
     position: sticky;
     top:200px;
     .event-user-block{
@@ -1938,8 +1934,6 @@ header{
       margin-bottom: 20px;
       border-radius: 8px;
       padding: 30px;
-      & .event-user-plofile {
-      }
     }
     .event-data-block{
       background-color: white;
@@ -2039,6 +2033,7 @@ header{
   margin:0 auto;
   border-top: 2px solid rgb(193, 191, 187);
   display: flex;
+  position: relative;
   button{
     margin-left: auto;
     display: block;

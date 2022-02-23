@@ -23,7 +23,8 @@ class ApplicationController < ActionController::Base
 
   def login_check
     if current_user.nil?
-      redirect_to root_url, danger: "ログインしてください"
+      flash[:danger] = "loginしてください"
+      redirect_to root_url
     end
   end
 

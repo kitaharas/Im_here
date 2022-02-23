@@ -1,7 +1,10 @@
 class EventsController < ApplicationController
 
+  before_action :login_check,{only:[:show, :edit, :destroy]}
+
   def search
-    @events = Event.search(params[:search])
+    pub_events = Event.where(publish: true)
+    @events = pub_events.search(params[:search])
   end
 
   def scheduling
@@ -13,12 +16,10 @@ class EventsController < ApplicationController
 
   def genre
     @genre = Genre.all
-    # @event = Event.all
   end
 
   def feel
     @feel = Feel.all
-    # @event = Event.all
   end
 
   def create
@@ -36,21 +37,17 @@ class EventsController < ApplicationController
   end
 
   def show
+    
     @event = Event.find(params[:id])
     @scheduling = Schedule.where(event_id: @event.id).pluck(:user_id)
     @scheduling_users = User.find(@scheduling)
     @user = User.find(@event.user.id)
     @user_events = Event.where(user_id: @user.id)
-    p "----------------"
-    p @user_events
-  
-    p "----------------"
-
 
     if @notifications_schedule.where(visitor_id: @user.id)
       @notifications_schedule.update_all(checked: true)
     end
-
+  
   end
 
   def edit

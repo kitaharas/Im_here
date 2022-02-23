@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   get 'users/:id/edit', to: 'users#edit' , as: :edit_user
   patch 'users/:id/edit', to: 'users#update', as: :update_user
   get 'users/:id/our', to: 'users#show_our', as: 'show_our'
-  get 'users/:id/view', to: 'users#show_view', as: 'show_view'
   get 'users/:id', to: 'users#show', as: 'mypage'
   get 'login',   to: 'sessions#new'
   post 'events/new', to: 'events#new', as:'event_new'

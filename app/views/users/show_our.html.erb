@@ -2,31 +2,9 @@
 
 
 <div class="my-page-section">
-  <div class="profile">
-    <div class="profile-img">
-      <% if @user.image_name.size == 0 %>
-        <%= image_tag "/assets/catman" %>
-      <% else %>
-        <%= image_tag @user.image_name.url %>
-      <% end %>
-    </div>
-    <p><%= @user.name %></p>
-    <div>
-      <p>フォロー数: <%= @user.followings.count %> フォロワー数: <%= @user.followers.count %></p>
-      <%= link_to mypage_path,"data-turbolinks": false do %>
-        <button class="follow_viewer" style="background-color:green;">戻る</button>
-      <% end %>
-    </div>
-    <div class="profile-coment">
-      <% if @user.comment == nil || @user.comment == "" %>
-      <span>プロフィールコメント<span>
-      <% else %>
-      <p class="profile-comment-text">
-        <%= @user.comment %>
-      </p>
-      <% end %>
-    </div>
-  </div>
+
+  <%= render 'users/user_profile', button: "戻る", style: "background-color:green;" ,path: "/users/#{@user.id}" %>
+
   <div class="event-display">
     <div class="event-container">
       <ul class="tab-menu">

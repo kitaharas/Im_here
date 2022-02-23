@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
   def show
     redirect_to root_path unless current_user.id == @user.id
-    @user = User.find(params[:id])
     @events = @user.events
     @events_pub = @events.where(publish: true)
     @events_notpub = @events.where(publish: false)
@@ -25,12 +24,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show_view
-    @user = User.find(params[:id])
-    if current_user.id == @user.id
-      redirect_to mypage_path
-    end
-  end
 
   def following
     @followings = @user.following_user.where.not(id: current_user.id)

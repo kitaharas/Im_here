@@ -69,6 +69,9 @@
   <div id="mask" class="hidden" data-modal="overlay"></div>
   
   <div class="status_bar">
+    <% flash.each do |message_type, message| %>
+      <span id="flash"><%= message %></span>
+    <% end %>
     <%= form_tag(search_path_url,:method => 'get',class:"search_container",id:"search_container") do %>
       <%= text_field_tag :search ,'',size:25, placeholder:"キーワード検索" %>
       <input type="submit"  value="&#xf002">
@@ -189,9 +192,7 @@
           <%= f.text_field :people, id: :people %>
           <span>※空欄で制限なし</span>
         </div>
-        <%# <div class="btn">
-	        <a href="javascript:void(0)" onclick="do_submit(this);" class="btn_transmit">送信</a>
-        </div> %>
+
         <input type="submit" value="イベント登録" onclick="do_submit(this);return false;" id="event_confirm">
       <% end %>
     </form>
