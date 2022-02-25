@@ -144,15 +144,12 @@
   let pageCount = 2
   "<% if @room %>"
 
-    const params = window.location.href
-      console.log(params.substr());
-
+    const params = window.location.href;
     const URLparams = params.substr();
+    const APIparams = URLparams.split('rooms/');
+      console.log(APIparams[0]);
 
-
-
-
-    const URL = `${URLparams}/message`
+    const URL = APIparams[0] + "rooms/<%= @room.id %>/message";
     console.log(URL);
     
     function message_create(page=0) {
@@ -171,13 +168,12 @@
           pTime.textContent = ymd + "\u00a0" +hm;
           const img = document.createElement('img');
           img.classList.add = "message-image"
-          // console.log(message);                
-          // console.log(message.content.length);;                
+                  
         
           if(data.user.id === message.user_id ){
             document.querySelector('.message-list').prepend(li);
             li.style.marginLeft = "auto";
-            // li.style.width = "fit-content";
+            
 
             if(message.content !== null ){
               
