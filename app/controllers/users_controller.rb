@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
   include RelationshipsHelper
+  
+
 
   before_action :login_check, {only: [:edit, :update, :show, :destroy]}
   before_action :set_user_params, {only: [:show, :show_our, :following, :follower, :edit, :update,]}
@@ -17,11 +19,13 @@ class UsersController < ApplicationController
     
     @f_event = Event.where(user_id: [*current_user.following_ids])
     @f_event_pubs = @f_event.where(publish: true) 
+    
   end
 
   def show_our
     redirect_to root_path unless current_user.id == @user.id
     @users = User.all
+
   end
 
 

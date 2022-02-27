@@ -44,6 +44,11 @@ class EventsController < ApplicationController
     @user = User.find(@event.user.id)
     @user_events = Event.where(user_id: @user.id)
 
+    @room = room_check(@user, current_user)
+    p "-----------------"
+    p @room
+    p "-----------------"
+
     if @notifications_schedule.where(visitor_id: @user.id)
       @notifications_schedule.update_all(checked: true)
     end

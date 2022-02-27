@@ -1,0 +1,8 @@
+<div class="event-user-plofile">
+  <% if @event.user.image_name.size == 0 %>
+    <img src="/assets/catman" class="event-plofile-img">
+  <% else %>
+    <img src="<%= @event.user.image_name %>" class="event-plofile-img">
+  <% end %>
+  <p><%= @event.user.name %></p>
+</div>

@@ -32,31 +32,8 @@
           フォロー中はいません
         <% else %>
           <% following.each do |user| %>
-            <div class="follower_view">
-              <% unless user == current_user %>
-                <div class="follower">
-                  <% if @notifications_follow.present? %>
-                    <span class="user-show-foll-notification"></span>
-                  <% end %>
-                  <% if @notifications_message.present? %>
-                    <span class="user-show-foll-notification"></span>
-                  <% end %>
-                  <div class="follow-btn-area">
-                    <%= link_to room_path(current_user.id, user.id),data: {"turbolinks"=>false} do %>
-                      <p class="following-name"><%= user.name %></p>
-                    <% end %>
-                  </div>
-                  <%= render 'users/follow-button', user: user %>
-                </div>
-                <div class="follow-modal hidden">
-                  <p><%= user.name %>さんのフォローを解除しますか？</p>
-                  <%= link_to unfollow_path(user), method: :post, remote: true do %> 
-                    <div class="unlock-btn">フォロー解除</div>
-                  <% end %>
-                  <div class="unlock-btn cancel">キャンセル</div>
-                </div>
-              </div>
-            <% end %>
+            <%= render 'users/follower', user: user %>
+            
           <% end %>
         <% end %>
       </section>
@@ -65,32 +42,33 @@
           フォロワーはいません
         <% else %>
           <% followers.each do |user| %>
-            <div class="follower_view">
-              <% unless user == current_user %>
+            <%= render 'users/follower', user: user %>
+            <%# <div class="follower_view">
+              <% unless user == current_user % >
                 <div class="follower">
-                  <% if @notifications_follow.present? %>
+                  <% if @notifications_follow.present? % >
                   <span class="user-show-foll-notification"></span>
-                <% end %>
-                <% if @notifications_message.present? %>
+                <% end % >
+                <% if @notifications_message.present? % >
                   <span class="user-show-foll-notification"></span>
-                <% end %>
+                <% end % >
                   <div class="follow-btn-area">
-                    <%= link_to room_path(current_user.id, user.id),data: {"turbolinks"=>false} do %>
-                      <p class="following-name"><%= user.name %></p>
+                    <%= link_to room_path(current_user.id, user.id),data: {"turbolinks"=>false} do % >
+                      <p class="following-name"><%= user.name % ></p>
                     
-                    <% end %>
+                    <% end % >
                   </div>
-                  <%= render 'users/follow-button', user: user %>
+                  <%= render 'users/follow-button', user: user % >
                 </div>
                 <div class="follow-modal hidden">
-                  <p><%= user.name %>さんのフォローを解除しますか？</p>
-                  <%= link_to unfollow_path(user), method: :post, remote: true do %> 
+                  <p><%= user.name % >さんのフォローを解除しますか？</p>
+                  <%= link_to unfollow_path(user), method: :post, remote: true do % > 
                     <div class="unlock-btn">フォロー解除</div>
-                  <% end %>
+                  <% end % >
                   <div class="unlock-btn cancel">キャンセル</div>
                 </div>
-              </div>
-            <% end %>
+              <% end % >
+            </div> %>
           <% end %>
         <% end %>
       </section>

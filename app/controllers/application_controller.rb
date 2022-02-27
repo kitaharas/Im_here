@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   # helper_method :unchecked_notifications
   helper_method :login_check
-
+  helper_method :room_check
   before_action :set_notification
   
 
@@ -51,6 +51,8 @@ class ApplicationController < ActionController::Base
 
     return exist_room
   end
+
+  
 
   private
   def set_notification
