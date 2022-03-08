@@ -1,0 +1,22 @@
+<% if current_user.id == @event.user.id %>
+  <%= link_to "/users/#{@event.user.id}" do %>
+    <div class="event-user-plofile">
+      <% if @event.user.image_name.size == 0 %>
+        <img src="/assets/catman" class="event-plofile-img">
+      <% else %>
+        <img src="<%= @event.user.image_name %>" class="event-plofile-img">
+      <% end %>
+      <p><%= @event.user.name %></p>
+    </div>
+  <% end %>
+<% else %>
+  <% if @room %>
+    <%= link_to exist_room_path(@room.id) do %>
+      <%= render "events/event_user_jump" %>
+    <% end %>
+  <% else %>
+    <%= link_to room_path(current_user.id, @event.user.id) do %>
+      <%= render "events/event_user_jump" %>
+    <% end %>
+  <% end %>
+<% end %>

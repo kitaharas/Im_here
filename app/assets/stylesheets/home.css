@@ -2617,4 +2617,127 @@ footer :first-child {
 footer .copy-write {
   margin-top: 100px;
 }
+
+.respon-mainlogo {
+  display: none;
+}
+
+@media screen and (max-width: 1300px) {
+  .top-img {
+    width: 506px;
+  }
+  .anime-section .videochat {
+    width: 220px;
+    left: 33%;
+  }
+}
+
+@media screen and (max-width: 1116px) {
+  .top-img {
+    display: none;
+  }
+  .top-section .content-text {
+    top: 47%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    font-size: 48px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}
+
+@media screen and (max-width: 962px) {
+  .main-logo {
+    display: none;
+  }
+  header .global-menu {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  header .global-menu ul {
+    margin: 0;
+  }
+  header .status_bar .status_bar_right {
+    position: absolute;
+    top: 0;
+    right: 5%;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  header .status_bar .status_bar_right ul {
+    display: none;
+  }
+  .respon-mainlogo {
+    display: block;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    line-height: 60px;
+  }
+  .respon-mainlogo a {
+    display: block;
+    color: #fff;
+    font-size: 42px;
+  }
+  .top-section .content-text {
+    top: 47%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    font-size: 42px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  body {
+    padding: 0;
+  }
+  header .status_bar {
+    border-bottom: none;
+  }
+  header .status_bar .search_container {
+    display: none;
+  }
+  header .status_bar .status_bar_right {
+    display: none;
+  }
+  header .global-menu {
+    display: none;
+  }
+  .top-section .content-text {
+    top: 47%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    font-size: 32px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  header {
+    width: auto;
+  }
+  .status_bar_right {
+    overflow: hidden;
+  }
+  .top-section .content-text {
+    top: 47%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    font-size: 24px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}
 /*# sourceMappingURL=home.css.map */
