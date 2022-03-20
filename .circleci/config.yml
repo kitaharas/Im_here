@@ -23,10 +23,11 @@ jobs:
     docker:
       - image: cimg/ruby:2.6.8
       - image: circleci/mysql:5.7
-        # environment:
-        #   MYSQL_ROOT_PASSWORD: password
-        #   MYSQL_DATABASE: Im_here_test
-        #   MYSQL_USER: root
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_DATABASE: Im_here_test
+          MYSQL_USER: root
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
