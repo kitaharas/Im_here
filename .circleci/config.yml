@@ -30,7 +30,7 @@ jobs:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_ROOT_PASSWORD: ''
           MYSQL_DATABASE: ci_rails_sample_test
-    working_directory: ~/repo
+    working_directory: ~/Im_here
     steps:
       - checkout:
           path: ~/Im_here
