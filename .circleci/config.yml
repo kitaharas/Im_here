@@ -22,18 +22,15 @@ jobs:
   test:
     docker:
       - image: cimg/ruby:2.6.8
+      # - image: circleci/mysql:5.7
+        environment:
+          RAILS_ENV: test
       - image: circleci/mysql:5.7
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_ROOT_PASSWORD: ''
-          MYSQL_DATABASE: Im_here_test
-          MYSQL_USER: root
-    environment:
-      BUNDLE_JOBS: "3"
-      BUNDLE_RETRY: "3"
-      APP_DATABASE_HOST: "127.0.0.1"
-      RAILS_ENV: test
-    working_directory: ~/Im_here
+          MYSQL_DATABASE: ci_rails_sample_test
+    working_directory: ~/repo
     steps:
       - checkout:
           path: ~/Im_here
