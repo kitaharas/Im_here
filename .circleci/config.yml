@@ -38,17 +38,12 @@ jobs:
           path: ~/Im_here
       - ruby/install-deps
       - run:
-        name: データベースのセットアップ1
-        command: bundle exec rake db:create
-      - run:
           name: Database setup
           command: bundle exec rails db:migrate
-      # - run:
-      #     name: test
-      #     command: bundle exec rake test
       - run:
-          name: run tests
-          command: bin/rspec
+          name: test
+          command: bundle exec rake test
+
   # deploy:
   #   docker:
   #     - image: cimg/ruby:2.7.5
