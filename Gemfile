@@ -71,7 +71,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'mini_racer','0.4.0'
+  # gem 'mini_racer','0.4.0'
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   # Easy installation and use of web drivers to run system tests with browsers
