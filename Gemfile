@@ -40,8 +40,9 @@ gem 'openssl'
 gem 'dotenv-rails'
 gem 'pry-rails'
 gem 'active_hash'
-gem 'mini_racer','0.4.0'
+# gem 'mini_racer','0.4.0'
 # gem 'therubyracer'
+gem 'execjs'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
