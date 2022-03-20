@@ -10,8 +10,8 @@ jobs:
     working_directory: ~/Im_here
     steps:
       - checkout:
-      #     path: ~/Im_here
-      # - ruby/install-deps
+          path: ~/Im_here
+      - ruby/install-deps
       # - restore_cache:
       #     name: bundle installの結果をrestore
       #     keys: 
