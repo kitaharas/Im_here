@@ -5,20 +5,31 @@
 自身の暮らしの可能性を広げるられることを目的としています。
 
 ## URL
-https://im-here-app.herokuapp.com/
+http://imhere.place/
+
+## 目指した課題解決
 
 ## 使用技術
-・フロントエンド
- - HTML/CSS
- - Javascript
- - Jquery
- 
-・バックエンド
- - Ruby '2.6.8'
- - Ruby on Rails '5.2.6'
 
-・インフラ
- - Heroku
+バックエンド
+ - Ruby 2.6.8
+ - Ruby on Rails 5.2.6
+ - MySQL 5.7
+ - NginX
+ - puma
+ - active_hash
+ - mini_magick
+
+フロントエンド
+ - HTML/CSS
+ - Javascript(サインアップ、ログイン、イベント登録、各種モーダル、お気に入り登録、メッセージ表示、TOPアニメーション)
+ - kaminari
+
+インフラ・開発環境
+ - Git/GitHub
+ - Docker/Docker-compose
+ - AWS(EC2,VPC,S3,Route3,RDS)
+ - CircleCI(CI)
 
 ## 機能一覧
 ・　基本機能
